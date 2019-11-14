@@ -25,16 +25,16 @@ export default function BottomNav() {
 
   return (
     <BottomNavigation 
-      value={null}
+      value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
       showLabels
       className={classes.root}
     >
-      <BottomNavigationAction  label="Home" icon={<ExploreIcon />} />
-      <BottomNavigationAction label="Cart" icon={<ShoppingBasketIcon />} />
-      <BottomNavigationAction label="Profile" icon={<PersonIcon />} />
+      <BottomNavigationAction value={0} label="Home" icon={<ExploreIcon />} />
+      <BottomNavigationAction value={1} label="Cart" icon={<ShoppingBasketIcon />} />
+      <BottomNavigationAction value={2} label="Profile" icon={<PersonIcon />} />
     </BottomNavigation>
   );
 }

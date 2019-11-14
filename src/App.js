@@ -18,6 +18,7 @@ import CheckoutButton from './CheckoutButton';
 import BottomNav from './components/BottomNav';
 import Pembayaran from './components/Pembayaran';
 import Profile from './components/Profile';
+import AddProduct from './components/AddProduct';
 
 
 
@@ -31,6 +32,7 @@ class App extends Component {
   
     <div className="Appbar" style={{flex:1}}>
       <MyAppBar></MyAppBar>
+      {/* <AddProduct></AddProduct> */}
       <Profile></Profile>
  {/* <DetailProduct></DetailProduct> */}
  {/* <Pembayaran></Pembayaran> */}

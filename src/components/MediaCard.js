@@ -33,14 +33,14 @@ export default function MediaCard() {
           title="Contemplative Reptile"
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            Tas Keranjang ori 
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+        
+        <h3>Tas Ori Wanita</h3>
+        
+          {/* <Typography variant="body2" color="textSecondary" component="p">
             Tas ini digunakan untuk membawa barang anda
           </Typography>
-          <h3>Kategori : Handmade</h3>
-          <h3 style={{fontWeight:"bold",color:"red"}}>Rp.120.000</h3>
+        */}
+          <h4 style={{fontWeight:"bold",color:"red"}}>Rp.120.000</h4>
         
         </CardContent>
       </CardActionArea>
