@@ -131,7 +131,7 @@ class Account extends Component {
               <Divider />
 
               <List component="nav" aria-label="main mailbox folders">
-                <ListItem button>
+                <ListItem button onClick={() => this.props.history.push('/sell/products/add')} >
                   <ListItemIcon>
                     <AddIcon />
                   </ListItemIcon>

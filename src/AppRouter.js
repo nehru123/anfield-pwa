@@ -30,6 +30,10 @@ const Account = asyncComponent(() =>
   import(/*webpackChunkName: "Account"*/ './screens/Account')
 )
 
+const AddProduct = asyncComponent(() =>
+  import(/*webpackChunkName: "AddProduct"*/ './screens/AddProduct')
+)
+
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 })
@@ -207,6 +211,7 @@ class AppRouter extends Component {
           <Route path="/home" component={Home} />
           <Route path="/cart" component={Cart} />
           <Route path="/account" component={Account} />
+          <Route path="/sell/products/add" component={AddProduct} />
           <Redirect from="*" to="/home" />
         </Switch>
       </PosedContainer>
