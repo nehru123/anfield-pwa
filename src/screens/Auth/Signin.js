@@ -28,7 +28,7 @@ margin-top:100px;
 
 `
 
- class Signin extends Component {
+ class SignIn extends Component {
 
    render() {
      return (
@@ -72,4 +72,4 @@ margin-top:100px;
      )
    }
  }
-export default Signin;
+export default SignIn;
