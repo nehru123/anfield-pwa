@@ -19,6 +19,7 @@ import BottomNav from './components/BottomNav';
 import Pembayaran from './components/Pembayaran';
 import Profile from './components/Profile';
 import AddProduct from './components/AddProduct';
+import Signin from './screens/Auth/Signin';
 
 
 
@@ -31,21 +32,21 @@ class App extends Component {
      
   
     <div className="Appbar" style={{flex:1}}>
-      <MyAppBar></MyAppBar>
+      {/* <MyAppBar></MyAppBar> */}
       {/* <AddProduct></AddProduct> */}
-      <Profile></Profile>
+      {/* <Profile></Profile> */}
  {/* <DetailProduct></DetailProduct> */}
  {/* <Pembayaran></Pembayaran> */}
 
          
-         
+         <Signin></Signin>
         
       
          
 {/*         
   
           <SearchBar></SearchBar> */}
-<div className="MyCategory" style={{display:'flex',flexWrap:"wrap",justifyContent:"center"}}>
+{/* <div className="MyCategory" style={{display:'flex',flexWrap:"wrap",justifyContent:"center"}}> */}
  
 
 
@@ -63,13 +64,13 @@ class App extends Component {
  <Cart></Cart>
  <Cart></Cart> */}
 
-</div>
+{/* </div> */}
        
         {/* <DetailProduct></DetailProduct> */}
-      <div className="MyBottomNav">
+      {/* <div className="MyBottomNav">
       
    <BottomNav></BottomNav>
-   </div>
+   </div> */}
   </div>
 
     );
