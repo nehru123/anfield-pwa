@@ -1,0 +1,123 @@
+
+import React,{Component} from 'react';
+import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import styled from 'styled-components';
+import Button from '@material-ui/core/Button';
+import PopupRoute from '../../components/PopupRoute';
+
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+
+import Select from '@material-ui/core/Select';
+
+const Container = styled.div` 
+
+
+size:100vh;
+display:block;
+margin:1%;
+.wrapper {
+
+  /* y-axis */
+  justify-content: center;
+  display:flex;
+  border-radius:15px;
+
+}
+
+
+
+.form_Order {
+  
+margin:auto;
+width:95%;
+}
+
+
+`
+class AddProduct extends Component {
+  render() {
+    return(
+
+<PopupRoute title="Add Product">
+
+
+<Container>
+
+<div className="wrapper">
+<div className="form_Order">
+<TextField
+        id="standard-full-width"
+        label="Nama Produk"
+
+        style={{ margin: 8 }}
+
+     
+        fullWidth
+        margin="normal"
+        InputLabelProps={{
+          shrink: true
+        }}
+      />
+
+      <TextField
+        id="standard-full-width"
+        label="Quantity"
+        style={{ margin: 8 }}
+      
+     
+        fullWidth
+        margin="normal"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+     <TextField
+        id="standard-full-width"
+        label="Deskripsi"
+        style={{ margin: 8 }}
+        className="alamat"
+    
+     
+        fullWidth
+        margin="normal"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+       <TextField
+        id="standard-full-width"
+        label="Harga"
+        style={{ margin: 8 }}
+       
+       
+     
+        fullWidth
+        margin="normal"
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+      
+      
+    <Button fullWidth variant="contained" color="secondary" className="mySubmit" style={{marginTop:15,margin:8}} >
+     Tambahkan
+    </Button>
+</div>
+
+</div>
+
+
+</Container>
+</PopupRoute>
+    );
+  }
+}
+export default AddProduct;

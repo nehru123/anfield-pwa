@@ -1,14 +1,15 @@
-import overlayLoading from './overlayLoading'
-import snackbar from './snackbar'
-import token from './token'
-import user from './user'
-import popupStack from './popupStack'
-import fab from './fab'
-import serviceWorker from './serviceWorker'
-import responsive from './responsive'
-import mainRouter from './mainRouter'
+import overlayLoading from "./overlayLoading";
+import snackbar from "./snackbar";
+import token from "./token";
+import user from "./user";
+import popupStack from "./popupStack";
+import fab from "./fab";
+import serviceWorker from "./serviceWorker";
+import responsive from "./responsive";
+import mainRouter from "./mainRouter";
+import products from "./products";
 
-export { 
+export {
   snackbar,
   token,
   user,
@@ -18,9 +19,10 @@ export {
   serviceWorker,
   responsive,
   mainRouter,
-}
+  products
+};
 
-export default { 
+export default {
   snackbar,
   token,
   user,
@@ -30,4 +32,5 @@ export default {
   serviceWorker,
   responsive,
   mainRouter,
-}
+  products
+};

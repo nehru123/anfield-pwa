@@ -1,156 +1,77 @@
+import React, { Component } from "react";
+import { createStyles, Theme, makeStyles } from "@material-ui/core/styles";
+import Input from "@material-ui/core/Input";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import styled from "styled-components";
 
+import PopupRoute from "../../components/PopupRoute";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
 
-import React, { Component } from 'react';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import styled from 'styled-components';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
-import Typography from '@material-ui/core/Typography';
-import FolderIcon from '@material-ui/icons/Folder';
-import DeleteIcon from '@material-ui/icons/Delete';
-// import MediaCard from './MediaCard';
-import PopupRoute from '../../components/PopupRoute';
+import Select from "@material-ui/core/Select";
 
-const Container = styled.div` 
-  size:100vh;
-  display:block;
+const Container = styled.div`
+  size: 100vh;
+  display: block;
+  margin: 1%;
 
-  .wrapper {
-    max-width:100%;
-    display:flex;
-    border-radius:15px;
-    margin:30px;
+  .MyCard {
+    display: block;
+    margin: 30px;
   }
-  .myAvatar {
-    justify-content:center;
-    margin:30px;
-    display:flex;
-  }
-  .myToko {
-    justify-content:flex-start;
-    margin:30px;
-    display:flex;
-  }
-  .myMenu {
-    display:flex;
-    justify-content:space-between;
-  }
-`
-
+`;
 class AddProduct extends Component {
   render() {
     return (
-      <PopupRoute
-        title="Add Product"
-      >
+      <PopupRoute title="Add Product">
         <Container>
-          <List >
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <FolderIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary="Tas Original Wanita"
-                secondary="Rp 120.000"
+          <Card className="MyCard">
+            <CardActionArea style={{ backgroundColor: "white" }}>
+              <CardMedia
+                component="img"
+                alt="Contemplative Reptile"
+                height="140"
+                image="https://cf.shopee.co.id/file/7207a2757db42a4448ebbfc45cc2a1be"
+                title="Contemplative Reptile"
               />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            
-            </ListItem>
-            <Divider style={{margin:30}} />
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <FolderIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary="Tas Original Wanita"
-                secondary="Rp 120.000"
-                
-              />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <FolderIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary="Tas Original Wanita"
-                secondary="Rp 120.000"
-              />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <FolderIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary="Tas Original Wanita"
-                secondary="Rp 120.000"
-              />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                image="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQhz5VP00ScWa0YiDcOdij2hHDlikcUYX9fb_bf322K8Rvt2p33"
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary="Tas Original Wanita"
-                secondary="Rp 120.000"
-              />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          </List>
+              <CardContent>
+                <h3>Tas Ori Wanita</h3>
+
+                {/* <Typography variant="body2" color="textSecondary" component="p">
+            Tas ini digunakan untuk membawa barang anda
+          </Typography>
+        */}
+                <h4 style={{ fontWeight: "bold", color: "red" }}>Rp.120.000</h4>
+              </CardContent>
+            </CardActionArea>
+            <CardActions>
+              <Button
+                fullWidth
+                style={{ display: "flex" }}
+                variant="contained"
+                size="medium"
+                color="secondary"
+                className="aaa"
+              >
+                Buy
+              </Button>
+            </CardActions>
+          </Card>
         </Container>
       </PopupRoute>
-    )
+    );
   }
 }
 export default AddProduct;

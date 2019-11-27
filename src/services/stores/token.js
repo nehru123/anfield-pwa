@@ -21,7 +21,7 @@ class Token {
     let access_token = localStorage.getItem(ACCESS_TOKEN_STORAGE_URI)
     if (access_token) {
       this.setAccessToken(access_token)
-      await user.getUser()
+      // await user.getUser()
     }
 
     this.isSettingUp = false

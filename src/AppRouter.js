@@ -30,6 +30,15 @@ const Account = asyncComponent(() =>
   import(/*webpackChunkName: "Account"*/ './screens/Account')
 )
 
+const ListProduct = asyncComponent(() =>
+  import(/*webpackChunkName: "ListProduct"*/ './screens/ListProduct')
+)
+const DetailPage = asyncComponent(() =>
+  import(/*webpackChunkName: "DetailPage"*/ './screens/DetailPage')
+)
+const OrderPage = asyncComponent(() =>
+  import(/*webpackChunkName: "OrderPage"*/ './screens/OrderPage')
+)
 const AddProduct = asyncComponent(() =>
   import(/*webpackChunkName: "AddProduct"*/ './screens/AddProduct')
 )
@@ -37,6 +46,7 @@ const AddProduct = asyncComponent(() =>
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 })
+
 
 const ContentContainer = styled.div`
   display: block;
@@ -211,7 +221,11 @@ class AppRouter extends Component {
           <Route path="/home" component={Home} />
           <Route path="/cart" component={Cart} />
           <Route path="/account" component={Account} />
+          <Route path="/order" component={OrderPage} />
+          <Route path="/sell/products/list" component={ListProduct} />
           <Route path="/sell/products/add" component={AddProduct} />
+          <Route path="/products/:id" component={DetailPage} />
+
           <Redirect from="*" to="/home" />
         </Switch>
       </PosedContainer>
@@ -226,7 +240,7 @@ class AppRouter extends Component {
         <StyledToolbar width="200px" >
           <Link className="info" to="/" >
             <div className="logo" >
-              <img src="/images/icons/logo_blue.png" alt="logo" />
+              <img src="https://image.flaticon.com/icons/png/512/118/118096.png" alt="logo" />
             </div>
 
             <span className="title">{
