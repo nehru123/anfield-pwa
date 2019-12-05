@@ -17,10 +17,14 @@ import { products } from "../../services/stores";
 const Container = styled.div`
   display: block;
   size: 100vh;
-
+  margin: 0 auto;
   .myCard {
     max-width: 100%;
-    margin: 10px;
+
+    justify-content: center;
+  }
+  @media (min-width: 768px) {
+    width: 65%;
   }
   .Mytitle {
     font-family: aqua;

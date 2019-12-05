@@ -1,0 +1,7 @@
+- Resources Description Framework (RDF) telah dirancang untuk menghubungkan Web-based Data sumber untuk Semantic Web yang muncul dengan biaya yang relatif rendah [5]. Menurut penemunya, model RDF data mirip dengan model berorientasi obyek sedangkan
+
+
+RDF Schema (RDF-S) menggunakan RDF untuk menentukan konstruksi tambahan yang berguna untuk membuat object oriented skema dalam namespace terpisah.
+
+5.Apache Jena Fuseki sebuah server untuk mengolah data OWL dan melakukan query SPARQL dan memiliki antarmuka pengguna untuk pemantauan dan administrasi server.
+4.Dapat dijelaskan bahwa query diatas digunakan untuk menampilkan nama athlete yang tidak mendapatkan gold medal

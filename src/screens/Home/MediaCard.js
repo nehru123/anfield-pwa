@@ -32,12 +32,11 @@ class MediaCard extends Component {
         <Grid container spacing={20} justify="center">
           <Card className="MyCard">
             <CardActionArea style={{ backgroundColor: "white" }}>
-              <CardMedia component="img" fullWidth image={data.imageURL} />
+              <CardMedia component="img" image={data.imageURL} />
               <CardContent>
                 <h3>{data.name}</h3>
-                <h4 style={{ fontWeight: "bold", color: "red" }}>
-                  {data.price}
-                </h4>
+                <p>Harga</p>
+                <h4 style={{ color: "red" }}>Rp.{data.price}</h4>
               </CardContent>
             </CardActionArea>
             <CardActions>

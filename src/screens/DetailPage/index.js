@@ -23,36 +23,21 @@ const Container = styled.div`
   margin: auto;
   size: 100vh;
 
-  /* .card {
-    background: red;
-
-    &:hover {
-      background: green;
-    }
-  } */
-
   .details {
     background: grey;
   }
 
-  .info {
-    margin-top: 10px;
-  }
   .info1 {
     display: flex;
-    justify-content: space-around;
-    margin: 1px;
-  }
-  .info2 {
-    display: flex;
-    justify-content: space-around;
-    margin: 1px;
   }
 
   .MyCard {
     overflow: hidden;
     width: 100%;
     margin: 10px;
+  }
+  @media (min-width: 768px) {
+    width: 65%;
   }
   .BuyButton {
     margin: auto;
@@ -75,29 +60,12 @@ class DetailPage extends React.Component {
                   {products.product.name}
                 </Typography>
                 <h2 style={{ fontWeight: "bold", color: "red" }}>
-                  {" "}
-                  {products.product.price}
+                  Rp.{products.product.price}
                 </h2>
                 <p>Description</p>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {products.product.description}
                 </Typography>
-                <div className="info">
-                  <div className="info1">
-                    <p style={{ fontWeight: "bold", fontSize: 14 }}>
-                      Kategori : Handmade
-                    </p>
-                    <p style={{ fontWeight: "bold", fontSize: 14 }}>
-                      Berat : 90 gram
-                    </p>
-                  </div>
-                  <div className="info2">
-                    <p style={{ fontWeight: "bold", fontSize: 14 }}>Size : M</p>
-                    <p style={{ fontWeight: "bold", fontSize: 14 }}>
-                      Stock : 5
-                    </p>
-                  </div>
-                </div>
 
                 <div className="details"></div>
               </CardContent>
@@ -105,6 +73,7 @@ class DetailPage extends React.Component {
             <Button
               onClick={() => {
                 products.product = this.props.data;
+                this.props.history.push(`/cart`);
               }}
               fullWidth
               style={{ display: "flex" }}

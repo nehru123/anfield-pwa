@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -17,9 +17,10 @@ import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import RemoveIcon from "@material-ui/icons/Remove";
 import CheckoutButton from "../CheckoutButton";
-
+import { products } from "../../services/stores";
 import Fab from "@material-ui/core/Fab";
 import BaseRoute from "../../components/BaseRoute";
+import Myitem from "../Cart/Myitem";
 
 const Container = styled.div`
   margin: auto;
@@ -66,95 +67,20 @@ const Container = styled.div`
   }
 `;
 
-export default function MediaCard() {
-  return (
-    <BaseRoute>
-      <Container>
-        <div className="WrapContainer">
-          <div className="picture-wrapeer">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQhz5VP00ScWa0YiDcOdij2hHDlikcUYX9fb_bf322K8Rvt2p33"></img>
-            <h5>Tas Kulit Original Wanita</h5>
-            <p style={{ fontWeight: "bold", color: "red", marginTop: -20 }}>
-              Rp.120.000
-            </p>
-          </div>
-          <div className="details">
-            <div className="controls">
-              <Tooltip
-                title="Add"
-                size="small"
-                aria-label="add"
-                style={{ margin: 10 }}
-              >
-                <Fab color="secondary">
-                  <RemoveIcon />
-                </Fab>
-              </Tooltip>
-              <p>1</p>
-              <Tooltip
-                title="Add"
-                size="small"
-                aria-label="add"
-                style={{ margin: 10 }}
-              >
-                <Fab color="secondary">
-                  <AddIcon />
-                </Fab>
-              </Tooltip>
-
-              <Tooltip title="Delete" style={{ margin: -12 }}>
-                <IconButton aria-label="delete">
-                  <DeleteIcon style={{ fontSize: 30 }} />
-                </IconButton>
-              </Tooltip>
-
-              <Divider variant="middle" />
-            </div>
-          </div>
-        </div>
-        <div className="WrapContainer">
-          <div className="picture-wrapeer">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQhz5VP00ScWa0YiDcOdij2hHDlikcUYX9fb_bf322K8Rvt2p33"></img>
-            <h5>Tas Kulit Original Wanita</h5>
-            <p style={{ fontWeight: "bold", color: "red", marginTop: -20 }}>
-              Rp.120.000
-            </p>
-          </div>
-          <div className="details">
-            <div className="controls">
-              <Tooltip
-                title="Add"
-                size="small"
-                aria-label="add"
-                style={{ margin: 10 }}
-              >
-                <Fab color="secondary">
-                  <RemoveIcon />
-                </Fab>
-              </Tooltip>
-              <p>1</p>
-              <Tooltip
-                title="Add"
-                size="small"
-                aria-label="add"
-                style={{ margin: 10 }}
-              >
-                <Fab color="secondary">
-                  <AddIcon />
-                </Fab>
-              </Tooltip>
-
-              <Tooltip title="Delete" style={{ margin: -12 }}>
-                <IconButton aria-label="delete">
-                  <DeleteIcon style={{ fontSize: 30 }} />
-                </IconButton>
-              </Tooltip>
-
-              <Divider variant="middle" />
-            </div>
-          </div>
-        </div>
-      </Container>
-    </BaseRoute>
-  );
+class MyCart extends Component {
+  async componentDidMount() {
+    await products.fetchProducts();
+    console.log(products.data);
+  }
+  render() {
+    let { data } = this.props;
+    return (
+      <BaseRoute>
+        <Container>
+          <div className="WrapContainer"></div>
+        </Container>
+      </BaseRoute>
+    );
+  }
 }
+export default MyCart;

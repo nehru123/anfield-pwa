@@ -1,70 +1,69 @@
-import React, { Component } from 'react'
-import { Switch, Route, Redirect, Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { observable, observe } from 'mobx'
-import { observer } from 'mobx-react'
-import posed from 'react-pose'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import Slide from '@material-ui/core/Slide'
+import React, { Component } from "react";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
+import styled from "styled-components";
+import { observable, observe } from "mobx";
+import { observer } from "mobx-react";
+import posed from "react-pose";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import Slide from "@material-ui/core/Slide";
 
-import BottomNavigator from './components/BottomNavigator'
-import asyncComponent from './components/AsyncComponent'
-import { mainRouter, user, token } from './services/stores'
+import BottomNavigator from "./components/BottomNavigator";
+import asyncComponent from "./components/AsyncComponent";
+import { mainRouter, user, token } from "./services/stores";
 
 const Home = asyncComponent(() =>
-  import(/*webpackChunkName: "Home"*/ './screens/Home')
-)
+  import(/*webpackChunkName: "Home"*/ "./screens/Home")
+);
 
 const Cart = asyncComponent(() =>
-  import(/*webpackChunkName: "Cart"*/ './screens/Cart')
-)
+  import(/*webpackChunkName: "Cart"*/ "./screens/Cart")
+);
 
 const Account = asyncComponent(() =>
-  import(/*webpackChunkName: "Account"*/ './screens/Account')
-)
+  import(/*webpackChunkName: "Account"*/ "./screens/Account")
+);
 
 const ListProduct = asyncComponent(() =>
-  import(/*webpackChunkName: "ListProduct"*/ './screens/ListProduct')
-)
+  import(/*webpackChunkName: "ListProduct"*/ "./screens/ListProduct")
+);
 const DetailPage = asyncComponent(() =>
-  import(/*webpackChunkName: "DetailPage"*/ './screens/DetailPage')
-)
+  import(/*webpackChunkName: "DetailPage"*/ "./screens/DetailPage")
+);
 const OrderPage = asyncComponent(() =>
-  import(/*webpackChunkName: "OrderPage"*/ './screens/OrderPage')
-)
+  import(/*webpackChunkName: "OrderPage"*/ "./screens/OrderPage")
+);
 const AddProduct = asyncComponent(() =>
-  import(/*webpackChunkName: "AddProduct"*/ './screens/AddProduct')
-)
+  import(/*webpackChunkName: "AddProduct"*/ "./screens/AddProduct")
+);
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
-})
-
+});
 
 const ContentContainer = styled.div`
   display: block;
   background: white;
   position: relative;
   min-height: 100vh;
-`
+`;
 
 const PosedContainer = posed(ContentContainer)({
   [mainRouter.STATE_OPEN_CONTAINER]: {
     opacity: 1,
-    transition: { duration: 700 },
+    transition: { duration: 700 }
   },
   [mainRouter.STATE_CLOSE_CONTAINER]: {
     opacity: 0,
-    transition: { duration: 700 },
-  },
-})
+    transition: { duration: 700 }
+  }
+});
 
 const StyledAppBar = styled(AppBar)`
   && {
@@ -72,11 +71,10 @@ const StyledAppBar = styled(AppBar)`
     background: white;
     color: #424242;
     /* border-bottom: 1px solid #dadada; */
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06), 
-    0px 4px 5px 0px rgba(0, 0, 0, 0), 
-    0px 1px 24px 0px rgba(0,0,0,0.12);
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.06),
+      0px 4px 5px 0px rgba(0, 0, 0, 0), 0px 1px 24px 0px rgba(0, 0, 0, 0.12);
   }
-`
+`;
 
 const StyledToolbar = styled(Toolbar)`
   && {
@@ -105,116 +103,116 @@ const StyledToolbar = styled(Toolbar)`
       .logo {
         height: 45px;
         padding: 10px 0;
-    
+
         img {
           height: 100%;
         }
       }
     }
   }
-`
- 
+`;
+
 const Container = styled.div`
   display: block;
-`
+`;
 
 @observer
 class AppRouter extends Component {
-  @observable isShouldLoginDialogOpened = false
-  @observable routers = []
+  @observable isShouldLoginDialogOpened = false;
+  @observable routers = [];
 
   constructor(props) {
-    super(props)
-    this.initUnauthorizedRouters()
+    super(props);
+    this.initUnauthorizedRouters();
   }
 
   componentWillReceiveProps(props) {
-    if (this.props.location.pathname !== props.location.pathname) 
-      mainRouter.updateRoute(this.routers)
+    if (this.props.location.pathname !== props.location.pathname)
+      mainRouter.updateRoute(this.routers);
   }
 
   componentDidMount() {
-    mainRouter.updateRoute(this.routers)
+    mainRouter.updateRoute(this.routers);
 
-    if (!user.isLoggedIn) this.initUnauthorizedRouters()
-    else this.initAuthorizedRouters()
+    if (!user.isLoggedIn) this.initUnauthorizedRouters();
+    else this.initAuthorizedRouters();
 
-    this.userDisposer = observe(user, 'isLoggedIn', data => {
-      if (data.oldValue === data.newValue) return
-      if (!data.newValue) this.initUnauthorizedRouters()
-      else this.initAuthorizedRouters()
-    })
+    this.userDisposer = observe(user, "isLoggedIn", data => {
+      if (data.oldValue === data.newValue) return;
+      if (!data.newValue) this.initUnauthorizedRouters();
+      else this.initAuthorizedRouters();
+    });
 
-    this.tokenDisposer = observe(token, 'isSettingUp', data => {
-      if (data.oldValue === data.newValue) return
+    this.tokenDisposer = observe(token, "isSettingUp", data => {
+      if (data.oldValue === data.newValue) return;
       if (!data.newValue) {
         if (!user.isLoggedIn) {
-          user.logout()
-          this.initUnauthorizedRouters()
-        } else this.initAuthorizedRouters()
+          user.logout();
+          this.initUnauthorizedRouters();
+        } else this.initAuthorizedRouters();
       }
-    })
+    });
   }
 
   componentWillUnmount() {
-    if (this.userDisposer) this.userDisposer()
-    if (this.tokenDisposer) this.tokenDisposer()
+    if (this.userDisposer) this.userDisposer();
+    if (this.tokenDisposer) this.tokenDisposer();
   }
 
   initAuthorizedRouters() {
     this.routers = [
       {
-        icon: 'home',
-        label: 'Home',
+        icon: "home",
+        label: "Home",
         path: mainRouter.PATH_HOME,
-        outline: true,
+        outline: true
       },
       {
-        icon: 'cart',
-        label: 'Cart',
+        icon: "cart",
+        label: "Cart",
         path: mainRouter.PATH_CART,
-        outline: false,
+        outline: false
       },
       {
-        icon: 'account-circle',
-        label: 'Account',
+        icon: "account-circle",
+        label: "Account",
         path: mainRouter.PATH_ACCOUNT,
-        outline: true,
-      },
-    ]
+        outline: true
+      }
+    ];
   }
 
   initUnauthorizedRouters() {
     this.routers = [
       {
-        icon: 'home',
-        label: 'Home',
+        icon: "home",
+        label: "Home",
         path: mainRouter.PATH_HOME,
-        outline: true,
+        outline: true
       },
       {
-        icon: 'cart',
-        label: 'Cart',
+        icon: "cart",
+        label: "Cart",
         path: mainRouter.PATH_CART,
-        outline: false,
+        outline: false
       },
       {
-        icon: 'account-circle',
-        label: 'Account',
+        icon: "account-circle",
+        label: "Account",
         path: mainRouter.PATH_ACCOUNT,
-        outline: true,
-      },
-    ]
+        outline: true
+      }
+    ];
   }
 
   openShouldLoginDialog = () => {
-    this.isShouldLoginDialogOpened = true
-  }
+    this.isShouldLoginDialogOpened = true;
+  };
 
   renderRouter() {
     return (
-      <PosedContainer 
-        pose={mainRouter.containerPose} 
+      <PosedContainer
+        pose={mainRouter.containerPose}
         initialPose={mainRouter.STATE_CLOSE_CONTAINER}
       >
         <Switch>
@@ -229,27 +227,28 @@ class AppRouter extends Component {
           <Redirect from="*" to="/home" />
         </Switch>
       </PosedContainer>
-    )
+    );
   }
 
   renderAppBar() {
     return (
-      <StyledAppBar
-        position="fixed"
-      >
-        <StyledToolbar width="200px" >
-          <Link className="info" to="/" >
-            <div className="logo" >
-              <img src="https://image.flaticon.com/icons/png/512/118/118096.png" alt="logo" />
+      <StyledAppBar position="fixed">
+        <StyledToolbar width="200px">
+          <Link className="info" to="/">
+            <div className="logo">
+              <img
+                src="https://image.flaticon.com/icons/png/512/118/118096.png"
+                alt="logo"
+              />
             </div>
 
-            <span className="title">{
-              mainRouter.selectedRoute && mainRouter.selectedRoute.label
-            }</span>
+            <span className="title">
+              {mainRouter.selectedRoute && mainRouter.selectedRoute.label}
+            </span>
           </Link>
         </StyledToolbar>
       </StyledAppBar>
-    )
+    );
   }
 
   renderDialogs() {
@@ -259,7 +258,7 @@ class AppRouter extends Component {
           open={this.isShouldLoginDialogOpened}
           TransitionComponent={Transition}
           onClose={() => {
-            this.isShouldLoginDialogOpened = false
+            this.isShouldLoginDialogOpened = false;
           }}
         >
           <DialogTitle>Login Alert</DialogTitle>
@@ -269,18 +268,24 @@ class AppRouter extends Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => this.isShouldLoginDialogOpened = false} color="secondary">
+            <Button
+              onClick={() => (this.isShouldLoginDialogOpened = false)}
+              color="secondary"
+            >
               Nope
             </Button>
-            <Button onClick={() => {
-              this.props.history.push('/auth/login')
-            }} color="primary">
+            <Button
+              onClick={() => {
+                this.props.history.push("/auth/login");
+              }}
+              color="primary"
+            >
               Login
             </Button>
           </DialogActions>
         </Dialog>
       </React.Fragment>
-    )
+    );
   }
 
   render() {
@@ -292,8 +297,8 @@ class AppRouter extends Component {
 
         {this.renderDialogs()}
       </Container>
-    )
+    );
   }
 }
 
-export default AppRouter
+export default AppRouter;
