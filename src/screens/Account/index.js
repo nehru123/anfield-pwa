@@ -40,7 +40,7 @@ import BaseRoute from "../../components/BaseRoute";
 const Container = styled.div`
   size: 100vh;
   display: block;
-
+  padding: 30px;
   .wrapper {
     max-width: 100%;
     display: flex;
@@ -49,9 +49,13 @@ const Container = styled.div`
   }
 
   .myAvatar {
-    justify-content: center;
+    justify-content: flex-start;
     margin: 30px;
     display: flex;
+  }
+  .myMenu {
+    display: flex;
+    justify-content: space-between;
   }
 
   .myToko {
@@ -60,10 +64,6 @@ const Container = styled.div`
     display: flex;
   }
 
-  .myMenu {
-    display: flex;
-    justify-content: space-between;
-  }
   .ProductImage {
     display: flex;
     justify-content: flex-start;
@@ -103,23 +103,16 @@ class Account extends Component {
             index={this.tabIndex}
             onChangeIndex={i => (this.tabIndex = i)}
           >
-            <div>
+            <div className="MyWrapper"></div></div>
+            <div className="MyMenu">
               <div className="myAvatar">
                 <Avatar
                   src="https://cdn2.tstatic.net/wow/foto/bank/images/yong-junhyung.jpg"
                   className="myPhoto"
                   style={{ height: 120, width: 120, justifyContent: "center" }}
                 />
+                <p>Jun Hyung</p>
               </div>
-              <p
-                style={{
-                  textAlign: "center",
-                  alignSelf: "center",
-                  fontWeight: "bold"
-                }}
-              >
-                Jun Hyung
-              </p>
 
               <List component="nav" aria-label="main mailbox folders">
                 <ListItem button>

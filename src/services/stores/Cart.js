@@ -9,11 +9,22 @@ class Cart {
   @observable isFetchingProducts = false;
 
   @action
-  async fetchProducts() {
+  async addCart(name, price) {
     try {
       this.isFetchingProducts = true;
 
-      let { data } = await axios.get("/getCart?");
+      await axios.post("/addCart?", { name, price });
+    } catch (err) {
+      console.log(err);
+    } finally {
+      this.isFetchingProducts = false;
+    }
+  }
+  async getCart() {
+    try {
+      this.isFetchingProducts = true;
+
+      let { data } = await axios.get("/getCarts");
 
       this.data = data;
     } catch (err) {
@@ -24,4 +35,4 @@ class Cart {
   }
 }
 
-export default window.products = new Products();
+export default window.carts = new Cart();

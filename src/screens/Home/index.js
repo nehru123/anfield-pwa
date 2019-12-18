@@ -10,26 +10,40 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import MediaCard from "../Home/MediaCard";
+import InputLabel from "@material-ui/core/InputLabel";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
+
+import SearchIcon from "@material-ui/icons/Search";
 
 import BaseRoute from "../../components/BaseRoute";
 import { products } from "../../services/stores";
 
 const Container = styled.div`
-  display: block;
-  size: 100vh;
-  margin: 0 auto;
-  .myCard {
-    max-width: 100%;
+  width: 100%;
 
-    justify-content: center;
+  .myCard {
+    display: flex;
   }
-  @media (min-width: 768px) {
-    width: 65%;
+  .Catalog {
+    display: flex;
+    justify-content: space-around;
+    img {
+      height: 65px;
+      width: 65px;
+    }
   }
   .Mytitle {
-    font-family: aqua;
-    font-size: 50px;
-    margin: 40px;
+    color: black;
+    font-size: 30px;
+    margin: 50px;
+  }
+  .WrapperCard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
 `;
 
@@ -43,15 +57,28 @@ class Home extends Component {
   renderHome() {
     return (
       <div>
-        <div className="Mytitle">Leather Bag Collection</div>
-        <div
-          className="MyCategory"
-          style={{
-            flexWrap: "wrap",
-            display: "flex",
-            justifyContent: "center"
+        <TextField
+          style={{ marginTop: 30, padding: 40 }}
+          id="input-with-icon-textfield"
+          variant="outlined"
+          fullWidth
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <SearchIcon />
+              </InputAdornment>
+            )
           }}
-        >
+        />
+        <div className="Mytitle">Catalog</div>
+        <div className="Catalog">
+          <img src="https://icon-library.net/images/bag-icon-png/bag-icon-png-0.jpg"></img>
+
+          <img src="https://cdn3.iconfinder.com/data/icons/iconomous-the-rest/512/77-Gift-512.png"></img>
+        </div>
+
+        <div className="Mytitle">Best Seller</div>
+        <div className="WrapperCard">
           {products.data.map((d, i) => {
             return <MediaCard data={d} key={i} />;
           })}

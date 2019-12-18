@@ -13,14 +13,40 @@ import styled from "styled-components";
 import { products } from "../../services/stores";
 
 const Container = styled.div`
-  display: flex;
-  padding: 10px;
-  width: 100%;
-  margin: auto;
-  size: 100vh;
+  padding: 20px;
+
   .MyCard {
-    margin: auto;
-    width: 90%;
+    width: 360px;
+  }
+  .fotoproduk {
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 5px 5px 0px grey;
+  }
+  .namaproduk {
+    font-size: 30px;
+    font-family: BebasNeue Bold;
+    color: black;
+  }
+  .hargaproduk {
+    font-size: 20px;
+    color: black;
+  }
+  .wrapperCard {
+    padding: 20px;
+    background-color: white;
+    transform: translate(0px, -30px);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-radius: 20px 20px;
+    box-shadow: 5px 5px 0px grey;
+    width: 100%;
+  }
+  .buyButton {
+    width: 300px;
+    height: 70px;
+    transform: translate(75px, 65px);
   }
 `;
 
@@ -29,33 +55,22 @@ class MediaCard extends Component {
     let { data } = this.props;
     return (
       <Container>
-        <Grid container spacing={20} justify="center">
-          <Card className="MyCard">
-            <CardActionArea style={{ backgroundColor: "white" }}>
-              <CardMedia component="img" image={data.imageURL} />
-              <CardContent>
-                <h3>{data.name}</h3>
-                <p>Harga</p>
-                <h4 style={{ color: "red" }}>Rp.{data.price}</h4>
-              </CardContent>
-            </CardActionArea>
-            <CardActions>
-              <Button
+        <Grid container justify="center">
+          <div className="MyCard">
+            <img className="fotoproduk" src={data.imageURL}></img>
+            <div className="wrapperCard">
+              <p className="namaproduk">{data.name}</p>
+              <p className="hargaproduk">Rp.{data.price}</p>
+              <img
+                className="buyButton"
+                src="https://santaschristmasland.com/wp-content/uploads/2019/06/buy-now-button-transparent-png-5.png"
                 onClick={() => {
                   products.product = this.props.data;
                   this.props.history.push(`/products/${data.id}`);
                 }}
-                fullWidth
-                style={{ display: "flex" }}
-                variant="contained"
-                size="medium"
-                color="secondary"
-                className="myButton                                                             "
-              >
-                Buy
-              </Button>
-            </CardActions>
-          </Card>
+              ></img>
+            </div>
+          </div>
         </Grid>
       </Container>
     );
